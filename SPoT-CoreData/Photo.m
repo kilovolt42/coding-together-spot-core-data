@@ -2,7 +2,7 @@
 //  Photo.m
 //  SPoT-CoreData
 //
-//  Created by Kyle Stevens on 9/16/13.
+//  Created by Kyle Stevens on 9/18/13.
 //  Copyright (c) 2013 Kyle Stevens. All rights reserved.
 //
 
@@ -12,12 +12,13 @@
 
 @implementation Photo
 
-@dynamic title;
 @dynamic information;
-@dynamic unique;
 @dynamic photoURL;
 @dynamic thumbnailData;
 @dynamic thumbnailURL;
+@dynamic title;
+@dynamic unique;
+@dynamic lastAccessed;
 @dynamic tags;
 
 @end

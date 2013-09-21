@@ -11,6 +11,4 @@
 
 @interface TagsCDTVC : CoreDataTableViewController
 
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
-
 @end

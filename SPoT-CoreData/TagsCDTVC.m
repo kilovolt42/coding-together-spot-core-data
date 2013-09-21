@@ -8,8 +8,46 @@
 
 #import "TagsCDTVC.h"
 #import "Tag.h"
+#import "FlickrFetcher.h"
+#import "Photo+Flickr.h"
+#import "AppDelegate.h"
+
+@interface TagsCDTVC ()
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@end
 
 @implementation TagsCDTVC
+
+- (IBAction)refresh {
+	[self.refreshControl beginRefreshing];
+	dispatch_queue_t fetchQueue = dispatch_queue_create("Flickr fetch queue", NULL);
+	dispatch_async(fetchQueue, ^{
+		NSArray *photos = [FlickrFetcher stanfordPhotos];
+		[self.managedObjectContext performBlock:^{
+			for (NSDictionary *photo in photos) {
+				[Photo photoWithFlickrInfo:photo inManagedObjectContext:self.managedObjectContext];
+			}
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self.refreshControl endRefreshing];
+			});
+		}];
+	});
+}
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	[self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+	[(AppDelegate *)[UIApplication sharedApplication].delegate addObserver:self forKeyPath:@"managedObjectContext" options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString:@"managedObjectContext"] && object == [UIApplication sharedApplication].delegate) {
+		self.managedObjectContext = ((AppDelegate *)object).managedObjectContext;
+		if ([self.fetchedResultsController.fetchedObjects count] == 0) [self refresh];
+	} else {
+		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+	}
+}
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
 	_managedObjectContext = managedObjectContext;

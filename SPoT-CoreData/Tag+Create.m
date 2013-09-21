@@ -20,6 +20,7 @@
 		
 		NSError *error;
 		NSArray *matches = [context executeFetchRequest:request error:&error];
+		if (error) NSLog(@"%@", error);
 		
 		if (![matches count]) {
 			tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:context];

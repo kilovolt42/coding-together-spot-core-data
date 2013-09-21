@@ -19,8 +19,9 @@
 	request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
 	request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", [photoDictionary[FLICKR_PHOTO_ID] description]];
 	
-	NSError *error = nil;
+	NSError *error;
 	NSArray *matches = [context executeFetchRequest:request error:&error];
+	if (error) NSLog(@"%@", error);
 	
 	if (![matches count]) {
 		photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
@@ -29,6 +30,7 @@
 		photo.unique = [photoDictionary[FLICKR_PHOTO_ID] description];
 		photo.photoURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
 		photo.thumbnailURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatSquare] absoluteString];
+		photo.lastAccessed = nil;
 		NSArray *tags = [photoDictionary[FLICKR_TAGS] componentsSeparatedByString:@" "];
 		for (NSString *tagName in tags) {
 			if (![tagName isEqualToString:@"cs193pspot"] && ![tagName isEqualToString:@"portrait"] && ![tagName isEqualToString:@"landscape"]) {
