@@ -36,8 +36,46 @@
 				[segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
 				[segue.destinationViewController setTitle:photo.title];
 				photo.lastAccessed = [NSDate date];
+				if ([segue.destinationViewController respondsToSelector:@selector(setSplitViewBarButtonItem:)]) [self transferSplitViewBarButtonToViewController:segue.destinationViewController];
 			}
 		}
+	}
+}
+
+- (id)splitViewDetailWithBarButtonItem {
+	id detail = [self.splitViewController.viewControllers lastObject];
+	if (![detail respondsToSelector:@selector(setSplitViewBarButtonItem:)] || ![detail respondsToSelector:@selector(splitViewBarButtonItem)]) detail = nil;
+	return detail;
+}
+
+- (void)transferSplitViewBarButtonToViewController:(id)destinationViewController {
+	UIBarButtonItem *splitViewBarButtonItem = [[self splitViewDetailWithBarButtonItem] performSelector:@selector(splitViewBarButtonItem)];
+	[[self splitViewDetailWithBarButtonItem] performSelector:@selector(setSplitViewBarButtonItem:) withObject:nil];
+	if (splitViewBarButtonItem) [destinationViewController performSelector:@selector(setSplitViewBarButtonItem:) withObject:splitViewBarButtonItem];
+}
+
+#pragma mark - Split view delegate
+
+- (void)awakeFromNib {
+	self.splitViewController.delegate = self;
+}
+
+- (BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation {
+	return UIInterfaceOrientationIsPortrait(orientation);
+}
+
+- (void)splitViewController:(UISplitViewController *)sender willHideViewController:(UIViewController *)master withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popover {
+	barButtonItem.title = @"Photos";
+	id detailViewController = [self.splitViewController.viewControllers lastObject];
+	if ([detailViewController respondsToSelector:@selector(setSplitViewBarButtonItem:)]) {
+		[detailViewController performSelector:@selector(setSplitViewBarButtonItem:) withObject:barButtonItem];
+	}
+}
+
+- (void)splitViewController:(UISplitViewController *)sender willShowViewController:(UIViewController *)master invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
+	id detailViewController = [self.splitViewController.viewControllers lastObject];
+	if ([detailViewController respondsToSelector:@selector(setSplitViewBarButtonItem:)]) {
+		[detailViewController performSelector:@selector(setSplitViewBarButtonItem:) withObject:nil];
 	}
 }
 
