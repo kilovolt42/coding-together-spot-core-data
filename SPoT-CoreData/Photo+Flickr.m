@@ -28,7 +28,8 @@
 		photo.title = [photoDictionary[FLICKR_PHOTO_TITLE] description];
 		photo.information = [[photoDictionary valueForKeyPath:FLICKR_PHOTO_DESCRIPTION] description];
 		photo.unique = [photoDictionary[FLICKR_PHOTO_ID] description];
-		photo.photoURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
+		photo.largePhotoURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatLarge] absoluteString];
+		photo.originalPhotoURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatOriginal] absoluteString];
 		photo.thumbnailURL = [[FlickrFetcher urlForPhoto:photoDictionary format:FlickrPhotoFormatSquare] absoluteString];
 		photo.lastAccessed = nil;
 		NSArray *tags = [photoDictionary[FLICKR_TAGS] componentsSeparatedByString:@" "];

@@ -32,7 +32,12 @@
 		if ([segue.identifier isEqualToString:@"setImageURL:"]) {
 			Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
 			if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
-				NSURL *url = [NSURL URLWithString:photo.photoURL];
+				NSURL *url;
+				if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+					url = [NSURL URLWithString:photo.largePhotoURL];
+				} else {
+					url = [NSURL URLWithString:photo.originalPhotoURL];
+				}
 				[segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
 				[segue.destinationViewController setTitle:photo.title];
 				photo.lastAccessed = [NSDate date];

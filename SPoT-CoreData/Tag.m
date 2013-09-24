@@ -2,7 +2,7 @@
 //  Tag.m
 //  SPoT-CoreData
 //
-//  Created by Kyle Stevens on 9/18/13.
+//  Created by Kyle Stevens on 9/24/13.
 //  Copyright (c) 2013 Kyle Stevens. All rights reserved.
 //
 

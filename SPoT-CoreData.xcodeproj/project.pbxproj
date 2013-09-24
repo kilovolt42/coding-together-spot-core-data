@@ -12,8 +12,8 @@
 		27713BDC17E8A2F4007FD10D /* TagsCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 27713BDB17E8A2F4007FD10D /* TagsCDTVC.m */; };
 		27713BE217E8B8EB007FD10D /* PhotosByTagCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 27713BE117E8B8EA007FD10D /* PhotosByTagCDTVC.m */; };
 		2773A47517EA0A2D00AC6BF7 /* RecentsCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2773A47417EA0A2D00AC6BF7 /* RecentsCDTVC.m */; };
-		2773A47B17EA0DFD00AC6BF7 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2773A47A17EA0DFD00AC6BF7 /* Tag.m */; };
-		2773A47E17EA0DFD00AC6BF7 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2773A47D17EA0DFD00AC6BF7 /* Photo.m */; };
+		2779C3B817F1E49F001E6738 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779C3B717F1E49F001E6738 /* Photo.m */; };
+		2779C3BB17F1E49F001E6738 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779C3BA17F1E49F001E6738 /* Tag.m */; };
 		2798297A17EBBDDC0000EDAD /* PhotosCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2798297917EBBDDB0000EDAD /* PhotosCDTVC.m */; };
 		27D1D91A17E768BE00B46A5B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D1D91917E768BE00B46A5B /* UIKit.framework */; };
 		27D1D91C17E768BE00B46A5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D1D91B17E768BE00B46A5B /* Foundation.framework */; };
@@ -45,10 +45,10 @@
 		27713BE117E8B8EA007FD10D /* PhotosByTagCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosByTagCDTVC.m; sourceTree = "<group>"; };
 		2773A47317EA0A2D00AC6BF7 /* RecentsCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentsCDTVC.h; sourceTree = "<group>"; };
 		2773A47417EA0A2D00AC6BF7 /* RecentsCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentsCDTVC.m; sourceTree = "<group>"; };
-		2773A47917EA0DFD00AC6BF7 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
-		2773A47A17EA0DFD00AC6BF7 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
-		2773A47C17EA0DFD00AC6BF7 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		2773A47D17EA0DFD00AC6BF7 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		2779C3B617F1E49F001E6738 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		2779C3B717F1E49F001E6738 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		2779C3B917F1E49F001E6738 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		2779C3BA17F1E49F001E6738 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		2798297817EBBDDB0000EDAD /* PhotosCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosCDTVC.h; sourceTree = "<group>"; };
 		2798297917EBBDDB0000EDAD /* PhotosCDTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosCDTVC.m; sourceTree = "<group>"; };
 		27D1D91617E768BE00B46A5B /* SPoT-CoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPoT-CoreData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,10 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				27D1D94E17E7AA8600B46A5B /* SPoT.xcdatamodeld */,
-				2773A47917EA0DFD00AC6BF7 /* Tag.h */,
-				2773A47A17EA0DFD00AC6BF7 /* Tag.m */,
-				2773A47C17EA0DFD00AC6BF7 /* Photo.h */,
-				2773A47D17EA0DFD00AC6BF7 /* Photo.m */,
+				2779C3B917F1E49F001E6738 /* Tag.h */,
+				2779C3BA17F1E49F001E6738 /* Tag.m */,
+				2779C3B617F1E49F001E6738 /* Photo.h */,
+				2779C3B717F1E49F001E6738 /* Photo.m */,
 				27713BD717E89E3B007FD10D /* Tag+Create.h */,
 				27713BD817E89E3B007FD10D /* Tag+Create.m */,
 				27713BD417E898D0007FD10D /* Photo+Flickr.h */,
@@ -277,9 +277,9 @@
 				27713BDC17E8A2F4007FD10D /* TagsCDTVC.m in Sources */,
 				27713BE217E8B8EB007FD10D /* PhotosByTagCDTVC.m in Sources */,
 				2773A47517EA0A2D00AC6BF7 /* RecentsCDTVC.m in Sources */,
-				2773A47B17EA0DFD00AC6BF7 /* Tag.m in Sources */,
-				2773A47E17EA0DFD00AC6BF7 /* Photo.m in Sources */,
 				2798297A17EBBDDC0000EDAD /* PhotosCDTVC.m in Sources */,
+				2779C3B817F1E49F001E6738 /* Photo.m in Sources */,
+				2779C3BB17F1E49F001E6738 /* Tag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

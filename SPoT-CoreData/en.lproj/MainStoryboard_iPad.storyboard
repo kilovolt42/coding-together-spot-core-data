@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="529" y="-166"/>
         </scene>
-        <!--RecentsCDTVC-->
+        <!--RecentsCDTVC - SPoT-->
         <scene sceneID="1gA-Qu-FYT">
             <objects>
                 <tableViewController id="Uak-uk-HuP" customClass="RecentsCDTVC" sceneMemberID="viewController">
@@ -113,7 +113,7 @@
                             <outlet property="delegate" destination="Uak-uk-HuP" id="7rc-fo-LVQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="7zJ-pl-Fia"/>
+                    <navigationItem key="navigationItem" title="SPoT" id="7zJ-pl-Fia"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0X2-0F-jGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -316,6 +316,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="t5B-Rn-3H1"/>
+        <segue reference="Glg-0m-bTI"/>
     </inferredMetricsTieBreakers>
 </document>
