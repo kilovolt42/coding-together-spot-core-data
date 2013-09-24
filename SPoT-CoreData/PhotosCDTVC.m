@@ -8,6 +8,7 @@
 
 #import "PhotosCDTVC.h"
 #import "Photo.h"
+#import "IndicatorActivator.h"
 
 @implementation PhotosCDTVC
 
@@ -17,8 +18,32 @@
 	Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	cell.textLabel.text = photo.title;
 	cell.detailTextLabel.text = photo.information;
+	cell.imageView.image = nil;
 	
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+	Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	__block UIImage *thumbnail = [UIImage imageWithData:photo.thumbnailData];
+	if (!thumbnail) {
+		dispatch_queue_t thumbnail_download = dispatch_queue_create("thumbnail download", NULL);
+		dispatch_async(thumbnail_download, ^{
+			[IndicatorActivator activate];
+			photo.thumbnailData = [NSData dataWithContentsOfURL:[NSURL URLWithString:photo.thumbnailURL]];
+			[IndicatorActivator deactivate];
+			if (cell.window) {
+				thumbnail = [UIImage imageWithData:photo.thumbnailData];
+				dispatch_async(dispatch_get_main_queue(), ^{
+					cell.imageView.image = thumbnail;
+					[cell setNeedsLayout];
+				});
+			}
+		});
+	} else {
+		cell.imageView.image = thumbnail;
+		[cell setNeedsLayout];
+	}
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
